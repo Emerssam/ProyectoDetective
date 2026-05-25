@@ -3,6 +3,7 @@
 #include "Nodo.h"
 #include "../structures/PilaPistas.h"
 #include "../structures/ColaTestigos.h"
+#include "../structures/HashSospechosos.h"
 
 class Ciudad {
 
@@ -14,6 +15,8 @@ private:
     PilaPistas pilaPistas;
 
     ColaTestigos colaTestigos;
+
+    HashSospechosos sospechosos;
 
     int pistasRecolectadas;
 
@@ -42,5 +45,9 @@ public:
     void mostrarPistas();
 
     void interrogarTestigo();
+
+    void mostrarSospechosos();
+
+    void acusarSospechoso();
 
 };

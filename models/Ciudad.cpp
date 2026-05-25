@@ -22,6 +22,8 @@ Ciudad::Ciudad() {
 
     colocarTestigos();
 
+    sospechosos.generarSospechosos();
+
     colocarDetective();
 }
 
@@ -306,3 +308,19 @@ void Ciudad::interrogarTestigo() {
     colaTestigos.interrogar();
 }
 
+void Ciudad::mostrarSospechosos() {
+
+    sospechosos.mostrarSospechosos();
+}
+
+void Ciudad::acusarSospechoso() {
+
+    string nombre;
+
+    cout << endl;
+    cout << "Nombre del sospechoso: ";
+
+    cin >> nombre;
+
+    sospechosos.acusar(nombre);
+}

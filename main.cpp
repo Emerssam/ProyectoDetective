@@ -20,6 +20,8 @@ int main() {
         cout << "D = Derecha" << endl;
         cout << "T = Ver pistas" << endl;
         cout << "I = Interrogar testigo" << endl;
+        cout << "S = Ver sospechosos" << endl;
+        cout << "F = Acusar sospechoso" << endl;
 
         cin >> movimiento;
 
@@ -35,6 +37,16 @@ int main() {
             ciudad.interrogarTestigo();
         }
 
+        else if (movimiento == 'S') {
+
+            ciudad.mostrarSospechosos();
+        }
+
+        else if (movimiento == 'F') {
+
+            ciudad.acusarSospechoso();
+        }
+
         else {
 
             ciudad.moverDetective(movimiento);
@@ -43,4 +55,3 @@ int main() {
 
     return 0;
 }
-
