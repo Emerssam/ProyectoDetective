@@ -305,3 +305,4 @@ void Ciudad::interrogarTestigo() {
 
     colaTestigos.interrogar();
 }
+
