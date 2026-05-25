@@ -285,7 +285,9 @@ void Ciudad::moverDetective(char movimiento) {
 
     if (contenidoAnterior == 'W') {
 
-        Testigo nuevo("Vi a alguien sospechoso cerca del callejon.");
+        Testigo nuevo(
+                "Vi a alguien sospechoso cerca del callejon."
+        );
 
         colaTestigos.agregarTestigo(nuevo);
 
@@ -323,4 +325,26 @@ void Ciudad::acusarSospechoso() {
     cin >> nombre;
 
     sospechosos.acusar(nombre);
+}
+
+void Ciudad::guardarPuntaje() {
+
+    string nombre;
+
+    cout << endl;
+    cout << "Nombre jugador: ";
+
+    cin >> nombre;
+
+    int puntos = pistasRecolectadas * 10;
+
+    historial.insertar(nombre, puntos);
+
+    cout << endl;
+    cout << "Puntaje guardado." << endl;
+}
+
+void Ciudad::mostrarHistorial() {
+
+    historial.mostrarHistorial();
 }

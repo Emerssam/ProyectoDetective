@@ -22,6 +22,8 @@ int main() {
         cout << "I = Interrogar testigo" << endl;
         cout << "S = Ver sospechosos" << endl;
         cout << "F = Acusar sospechoso" << endl;
+        cout << "G = Guardar puntaje" << endl;
+        cout << "H = Ver historial" << endl;
 
         cin >> movimiento;
 
@@ -45,6 +47,16 @@ int main() {
         else if (movimiento == 'F') {
 
             ciudad.acusarSospechoso();
+        }
+
+        else if (movimiento == 'G') {
+
+            ciudad.guardarPuntaje();
+        }
+
+        else if (movimiento == 'H') {
+
+            ciudad.mostrarHistorial();
         }
 
         else {

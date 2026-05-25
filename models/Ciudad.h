@@ -4,6 +4,7 @@
 #include "../structures/PilaPistas.h"
 #include "../structures/ColaTestigos.h"
 #include "../structures/HashSospechosos.h"
+#include "../structures/ArbolPuntajes.h"
 
 class Ciudad {
 
@@ -17,6 +18,8 @@ private:
     ColaTestigos colaTestigos;
 
     HashSospechosos sospechosos;
+
+    ArbolPuntajes historial;
 
     int pistasRecolectadas;
 
@@ -49,5 +52,9 @@ public:
     void mostrarSospechosos();
 
     void acusarSospechoso();
+
+    void guardarPuntaje();
+
+    void mostrarHistorial();
 
 };
