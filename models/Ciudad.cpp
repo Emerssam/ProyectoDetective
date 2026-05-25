@@ -10,11 +10,15 @@ Ciudad::Ciudad() {
     inicio = nullptr;
     detective = nullptr;
 
+    pistasRecolectadas = 0;
+
     srand(time(nullptr));
 
     crearCiudad();
 
     colocarCallejones();
+
+    colocarPistas();
 
     colocarDetective();
 }
@@ -96,6 +100,30 @@ void Ciudad::colocarCallejones() {
     }
 }
 
+void Ciudad::colocarPistas() {
+
+    char tipos[4] = {'H', 'C', 'T', 'P'};
+
+    int cantidad = 0;
+
+    while (cantidad < 10) {
+
+        int fila = rand() % 9;
+        int columna = rand() % 9;
+
+        Nodo* actual = obtenerNodo(fila, columna);
+
+        if (actual->contenido == 'o') {
+
+            int tipo = rand() % 4;
+
+            actual->contenido = tipos[tipo];
+
+            cantidad++;
+        }
+    }
+}
+
 void Ciudad::colocarDetective() {
 
     while (true) {
@@ -160,6 +188,11 @@ void Ciudad::imprimirTablero() {
     }
 
     cout << endl;
+
+    cout << endl;
+    cout << "Pistas recolectadas: "
+         << pistasRecolectadas
+         << "/10" << endl;
 }
 
 void Ciudad::moverDetective(char movimiento) {
@@ -206,9 +239,32 @@ void Ciudad::moverDetective(char movimiento) {
 
     detective->contenido = ' ';
 
+    char contenidoAnterior = siguiente->contenido;
+
     detective = siguiente;
+
+    if (contenidoAnterior == 'H' ||
+        contenidoAnterior == 'C' ||
+        contenidoAnterior == 'T' ||
+        contenidoAnterior == 'P') {
+
+        Pista nueva(contenidoAnterior);
+
+        pilaPistas.agregarPista(nueva);
+
+        pistasRecolectadas++;
+
+        cout << endl;
+        cout << "Has encontrado una pista: "
+             << contenidoAnterior << endl;
+    }
 
     detective->contenido = 'D';
 
     detective->descubierto = true;
+}
+
+void Ciudad::mostrarPistas() {
+
+    pilaPistas.mostrarPistas();
 }

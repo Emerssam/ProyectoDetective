@@ -18,12 +18,20 @@ int main() {
         cout << "S = Abajo" << endl;
         cout << "A = Izquierda" << endl;
         cout << "D = Derecha" << endl;
+        cout << "T = Ver pistas" << endl;
 
         cin >> movimiento;
 
         movimiento = toupper(movimiento);
 
-        ciudad.moverDetective(movimiento);
+        if (movimiento == 'T') {
+
+            ciudad.mostrarPistas();
+        }
+        else {
+
+            ciudad.moverDetective(movimiento);
+        }
     }
 
     return 0;
