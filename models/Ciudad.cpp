@@ -20,6 +20,8 @@ Ciudad::Ciudad() {
 
     colocarPistas();
 
+    colocarTestigos();
+
     colocarDetective();
 }
 
@@ -118,6 +120,26 @@ void Ciudad::colocarPistas() {
             int tipo = rand() % 4;
 
             actual->contenido = tipos[tipo];
+
+            cantidad++;
+        }
+    }
+}
+
+void Ciudad::colocarTestigos() {
+
+    int cantidad = 0;
+
+    while (cantidad < 5) {
+
+        int fila = rand() % 9;
+        int columna = rand() % 9;
+
+        Nodo* actual = obtenerNodo(fila, columna);
+
+        if (actual->contenido == 'o') {
+
+            actual->contenido = 'W';
 
             cantidad++;
         }
@@ -259,6 +281,16 @@ void Ciudad::moverDetective(char movimiento) {
              << contenidoAnterior << endl;
     }
 
+    if (contenidoAnterior == 'W') {
+
+        Testigo nuevo("Vi a alguien sospechoso cerca del callejon.");
+
+        colaTestigos.agregarTestigo(nuevo);
+
+        cout << endl;
+        cout << "Has encontrado un testigo." << endl;
+    }
+
     detective->contenido = 'D';
 
     detective->descubierto = true;
@@ -267,4 +299,9 @@ void Ciudad::moverDetective(char movimiento) {
 void Ciudad::mostrarPistas() {
 
     pilaPistas.mostrarPistas();
+}
+
+void Ciudad::interrogarTestigo() {
+
+    colaTestigos.interrogar();
 }

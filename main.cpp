@@ -19,6 +19,7 @@ int main() {
         cout << "A = Izquierda" << endl;
         cout << "D = Derecha" << endl;
         cout << "T = Ver pistas" << endl;
+        cout << "I = Interrogar testigo" << endl;
 
         cin >> movimiento;
 
@@ -28,6 +29,12 @@ int main() {
 
             ciudad.mostrarPistas();
         }
+
+        else if (movimiento == 'I') {
+
+            ciudad.interrogarTestigo();
+        }
+
         else {
 
             ciudad.moverDetective(movimiento);

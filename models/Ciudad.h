@@ -2,6 +2,7 @@
 
 #include "Nodo.h"
 #include "../structures/PilaPistas.h"
+#include "../structures/ColaTestigos.h"
 
 class Ciudad {
 
@@ -11,6 +12,8 @@ private:
     Nodo* detective;
 
     PilaPistas pilaPistas;
+
+    ColaTestigos colaTestigos;
 
     int pistasRecolectadas;
 
@@ -34,8 +37,10 @@ public:
 
     void colocarPistas();
 
-    void revisarPista();
+    void colocarTestigos();
 
     void mostrarPistas();
+
+    void interrogarTestigo();
 
 };
